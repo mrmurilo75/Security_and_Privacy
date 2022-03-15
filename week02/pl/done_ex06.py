@@ -1,6 +1,4 @@
-ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-
-def decipher_freq(ciphertext):
+def decipher_freq(ciphertext, ALPHABET = 'abcdefghijklmnopqrstuvwxyz'):
     # setup
     txt_len = 0
     count = {}
@@ -12,8 +10,9 @@ def decipher_freq(ciphertext):
         if c in ALPHABET:
             count[c] += 1
             txt_len += 1
-
-    result = sorted(( (cc/txt_len, key) for (key, cc)  in count.items() ), reverse = True)
+    result = []
+    if txt_len != 0:
+        result = sorted(( (cc/txt_len, key) for (key, cc)  in count.items() ), reverse = True)
     return result
 
 
