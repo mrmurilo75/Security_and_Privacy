@@ -4,25 +4,31 @@
 # The function should only operate on the characters ‘a’, ‘b’, . . . ‘z’ (both upper and lower case),
 # and it should leave any other characters, unchanged.
 
-ORD_a = ord('a')
-ORD_A = ord('A')
-ORD_z = ord('z')
-ORD_Z = ord('Z')
+def cipher(key, text):
+    ORD_a = ord('a')
+    ORD_A = ord('A')
+    ORD_z = ord('z')
+    ORD_Z = ord('Z')
 
-key  = int(input('key : '))
-text = input('text: ')
-cipher = ''
+    cipher = ''
 
-for c in text:
-#    print(c)
-    oc = ord(c)
-#    print(oc)
-    if oc >= ORD_a and oc <= ORD_z:
-        cipher += chr(oc + key + ( (-ORD_z +ORD_a-1) if (oc + key > ORD_z) else 0))
-    elif oc >= ORD_A and oc <= ORD_Z:
-        cipher += chr(oc + key + ( (-ORD_Z +ORD_A-1) if oc + key > ORD_Z else 0))
-    else:
-        cipher += c
+    for c in text:
+        oc = ord(c)
+        if oc >= ORD_a and oc <= ORD_z:
+            cipher += chr(oc + key + ( (-ORD_z +ORD_a-1) if (oc + key > ORD_z) else 0))
+        elif oc >= ORD_A and oc <= ORD_Z:
+            cipher += chr(oc + key + ( (-ORD_Z +ORD_A-1) if oc + key > ORD_Z else 0))
+        else:
+            cipher += c
 
-print(cipher)
+    return cipher
+
+def main():
+    key  = int(input('key : '))
+    text = input('text: ')
+    print()
+    print(cipher(key, text))
+
+if __name__ == '__main__':
+    main()
 
